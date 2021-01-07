@@ -1,0 +1,5 @@
+This application consists of 2 parts : the Server implemented in Java using Springboot framework (backend) and the Monitor (frotend) which is and Angular app(https://github.com/muresandaiana/LocationApp-Frontend).
+It permits users to register and login using basic authentification and it runs in servlet container - Tomcat.
+The server offers functions like : login, register and each user can create a new location, get a location by its id, update a location by id and delete a location. Users have roles : basic and admin.
+Only the admin has the possibility to use the filter locations method. Which means that only the admin can see other users' locations. Filtering locations means that the admin can see a specific user's locations between and start date and end date.
+Basic admins can only see their locations and manipulate them.
