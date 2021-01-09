@@ -165,18 +165,8 @@ public class LocationServiceImpl implements LocationService {
             final List<FilteredLocationsResponseDTO> filteredLocations = new ArrayList<>();
 
             int i=0;
-            for (Location loc : locations) {
-               Calendar calendar1 = Calendar.getInstance();
-                Calendar calendar2 = Calendar.getInstance();
-                Calendar calendar3 = Calendar.getInstance();
-                if ( (calendar1.get(Calendar.YEAR)<=calendar3.get(Calendar.YEAR)
-                       &&calendar1.get(Calendar.MONTH)<= calendar3.get(Calendar.MONTH)
-                        && calendar1.get(Calendar.DAY_OF_MONTH)<=calendar3.get(Calendar.DAY_OF_MONTH) )
-                        &&
-                        (calendar2.get(Calendar.YEAR)<=calendar3.get(Calendar.YEAR)
-                                &&calendar2.get(Calendar.MONTH)<= calendar3.get(Calendar.MONTH)
-                                && calendar2.get(Calendar.DAY_OF_MONTH)<=calendar3.get(Calendar.DAY_OF_MONTH) )
-                     ) {
+          for(Location loc : locations) {
+                if ((loc.getCreatedAt().after(startDate) ||loc.getCreatedAt().equals(startDate)  )&& (loc.getCreatedAt().before(endDate)||loc.getCreatedAt().equals(endDate) )) {
                     FilteredLocationsResponseDTO filteredLocationsResponseDTO = new FilteredLocationsResponseDTO();
                     filteredLocationsResponseDTO.setId(loc.getId());
                     filteredLocationsResponseDTO.setLatitude(loc.getLatitude());
@@ -185,7 +175,6 @@ public class LocationServiceImpl implements LocationService {
                     filteredLocationsResponseDTO.setCreatedAt(loc.getCreatedAt());
                     filteredLocationsResponseDTO.setUpdatedAt(loc.getUpdatedAt());
                     filteredLocations.add(filteredLocationsResponseDTO);
-                      
                 }
             }
 
